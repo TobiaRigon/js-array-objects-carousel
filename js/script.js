@@ -143,3 +143,19 @@ images.forEach((data, index) => {
     
   });
   
+
+
+
+
+
+ 
+
+// Funzione per eseguire l'autoplay
+function autoplay() {
+  // Simula un click sul pulsante "Next"
+  next.click();
+}
+
+// Intervallo di 3 secondi per l'autoplay
+const autoplayInterval = setInterval(autoplay, 3000);
+

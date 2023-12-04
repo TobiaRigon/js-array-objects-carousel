@@ -118,9 +118,9 @@ body {
     margin: 0;
     color: white;
     text-align: right;
-    padding: 5px; /* Aggiunge uno spazio tra il testo e il bordo */
-    background-color: rgba(0, 0, 0, 0.7); /* Aggiunge uno sfondo semitrasparente */
-    font-size: 12px; /* Puoi regolare la dimensione del testo a tuo piacimento */
+    padding: 5px; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    font-size: 12px; 
 }
 
 .item h3{
