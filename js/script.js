@@ -8,55 +8,85 @@ const thumbnailsContainer = document.querySelector('.thumbnails');
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
 
-// ... (il tuo codice precedente rimane invariato)
-
-// array delle immagini
+// array degli oggetti immagine
 const images = [
-    'img/01.webp',
-    'img/02.webp',
-    'img/03.webp',
-    'img/04.webp',
-    'img/05.webp',
-  ];
-  
-  // imposta elemento visibile
-  let activeItem = 0;
-  
-  // carica dinamicamente le immagini e le thumbnails
-  images.forEach((image, index) => {
-    const item = document.createElement('div');
-    if (index === 0) {
-      item.classList.add('item', 'active');
-    } else {
-      item.classList.add('item', 'hidden');
-    }
-  
-    const imgElement = document.createElement('img');
-    imgElement.src = image;
-    imgElement.alt = `Immagine ${index + 1}`;
-    item.appendChild(imgElement);
-  
-    itemsContainer.appendChild(item);
-  
-    const thumbnail = document.createElement('div');
-    thumbnail.classList.add('thumbnail');
-  
-    const thumbnailImg = document.createElement('img');
-    thumbnailImg.src = image;
-    thumbnailImg.alt = `Thumbnail ${index + 1}`;
-    thumbnail.appendChild(thumbnailImg);
-  
-    // Aggiungi l'overlay alle thumbnails
-    const overlay = document.createElement('div');
-    if (index !== 0) {
-      overlay.classList.add('overlay', 'active');
-    } else {
-      overlay.classList.add('overlay', 'hidden');
-    }
-    thumbnail.appendChild(overlay);
-  
-    thumbnailsContainer.appendChild(thumbnail);
-  });
+  {
+    image: 'img/01.webp',
+    title: "Marvel's Spiderman Miles Morale",
+    text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+  },
+  {
+    image: 'img/02.webp',
+    title: 'Ratchet & Clank: Rift Apart',
+    text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
+  },
+  {
+    image: 'img/03.webp',
+    title: 'Fortnite',
+    text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+  },
+  {
+    image: 'img/04.webp',
+    title: 'Stray',
+    text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+  },
+  {
+    image: 'img/05.webp',
+    title: "Marvel's Avengers",
+    text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+  },
+];
+
+// imposta elemento visibile
+let activeItem = 0;
+
+// carica dinamicamente le immagini e le thumbnails
+images.forEach((data, index) => {
+  const item = document.createElement('div');
+  if (index === 0) {
+    item.classList.add('item', 'active');
+  } else {
+    item.classList.add('item', 'hidden');
+  }
+
+  const imgContainer = document.createElement('div'); // Contenitore per l'immagine e il testo
+  imgContainer.classList.add('img-container');
+
+  const imgElement = document.createElement('img');
+  imgElement.src = data.image;
+  imgElement.alt = `Immagine ${index + 1}`;
+  imgContainer.appendChild(imgElement);
+
+  const overlayTitle = document.createElement('h3');
+  overlayTitle.textContent = data.title;
+  imgContainer.appendChild(overlayTitle);
+
+  const overlayText = document.createElement('h5');
+  overlayText.textContent = data.text;
+  imgContainer.appendChild(overlayText);
+
+  item.appendChild(imgContainer);
+  itemsContainer.appendChild(item);
+
+  const thumbnail = document.createElement('div');
+  thumbnail.classList.add('thumbnail');
+
+  const thumbnailImg = document.createElement('img');
+  thumbnailImg.src = data.image;
+  thumbnailImg.alt = `Thumbnail ${index + 1}`;
+  thumbnail.appendChild(thumbnailImg);
+
+  // Aggiungi l'overlay alle thumbnails
+  const overlay = document.createElement('div');
+  if (index !== 0) {
+    overlay.classList.add('overlay', 'active');
+  } else {
+    overlay.classList.add('overlay', 'hidden');
+  }
+  thumbnail.appendChild(overlay);
+
+  thumbnailsContainer.appendChild(thumbnail);
+});
   
   // al click su "next"
   next.addEventListener('click', function () {
