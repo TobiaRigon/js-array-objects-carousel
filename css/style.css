@@ -1,0 +1,106 @@
+/* Stili generali */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Stili del carousel */
+
+.slider {
+    position: relative;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.items_container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    margin: 25px;
+}
+
+.item {
+    flex: 0 0 100%;
+    text-align: center;
+}
+
+.item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.next,
+.prev {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+}
+
+.next {
+    right: 50%;
+    bottom: 25px;
+    transform: translateX(50%);
+}
+
+.prev {
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%);
+}
+
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* Stili delle thumbnails */
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnail {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
