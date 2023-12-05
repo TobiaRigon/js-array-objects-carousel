@@ -43,30 +43,26 @@ let activeItem = 0;
 // carica dinamicamente le immagini e le thumbnails
 images.forEach((data, index) => {
   const item = document.createElement('div');
-  if (index === 0) {
-    item.classList.add('item', 'active');
-  } else {
-    item.classList.add('item', 'hidden');
-  }
+  item.classList.add('item', index === 0 ? 'active' : 'hidden');
 
-  const imgContainer = document.createElement('div'); // Contenitore per l'immagine e il testo
+  const imgContainer = document.createElement('div');
   imgContainer.classList.add('img-container');
 
   const imgElement = document.createElement('img');
   imgElement.src = data.image;
   imgElement.alt = `Immagine ${index + 1}`;
-  imgContainer.appendChild(imgElement);
+  imgContainer.append(imgElement);
 
   const overlayTitle = document.createElement('h3');
   overlayTitle.textContent = data.title;
-  imgContainer.appendChild(overlayTitle);
+  imgContainer.append(overlayTitle);
 
   const overlayText = document.createElement('h5');
   overlayText.textContent = data.text;
-  imgContainer.appendChild(overlayText);
+  imgContainer.append(overlayText);
 
-  item.appendChild(imgContainer);
-  itemsContainer.appendChild(item);
+  item.append(imgContainer);
+  itemsContainer.append(item);
 
   const thumbnail = document.createElement('div');
   thumbnail.classList.add('thumbnail');
@@ -74,18 +70,13 @@ images.forEach((data, index) => {
   const thumbnailImg = document.createElement('img');
   thumbnailImg.src = data.image;
   thumbnailImg.alt = `Thumbnail ${index + 1}`;
-  thumbnail.appendChild(thumbnailImg);
+  thumbnail.append(thumbnailImg);
 
-  // Aggiungi l'overlay alle thumbnails
   const overlay = document.createElement('div');
-  if (index !== 0) {
-    overlay.classList.add('overlay', 'active');
-  } else {
-    overlay.classList.add('overlay', 'hidden');
-  }
-  thumbnail.appendChild(overlay);
+  overlay.classList.add('overlay', index !== 0 ? 'active' : 'hidden');
+  thumbnail.append(overlay);
 
-  thumbnailsContainer.appendChild(thumbnail);
+  thumbnailsContainer.append(thumbnail);
 });
   
   // al click su "next"
